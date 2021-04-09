@@ -1,46 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     @include('layouts.head')
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
 </head>
 
 <body>
-	<!--Preloader-->
-	<div class="preloader-it">
-		<div class="la-anim-1"></div>
-	</div>
-	<!--/Preloader-->
+    <!--Preloader-->
+    <div class="preloader-it">
+        <div class="la-anim-1"></div>
+    </div>
+    <!--/Preloader-->
     <div class="wrapper theme-1-active pimary-color-green">
 
         <!-- Top Menu Items -->
         @include('layouts.topbar')
-		<!-- /Top Menu Items -->
+        <!-- /Top Menu Items -->
 
-		<!-- Left Sidebar Menu -->
+        <!-- Left Sidebar Menu -->
         @include('layouts.sidebar')
-		<!-- /Left Sidebar Menu -->
+        <!-- /Left Sidebar Menu -->
 
-		<!-- Main Content -->
-		<div class="page-wrapper">
+        <!-- Main Content -->
+        <div class="page-wrapper">
             <div class="container-fluid">
 
-				<!-- Title -->
-				<div class="row heading-bg">
+                <!-- Title -->
+                <div class="row heading-bg">
                     <!-- Breadcrumb -->
                     @yield('breadcrumb')
-					<!-- /Breadcrumb -->
-				</div>
-				<!-- /Title -->
+                    <!-- /Breadcrumb -->
+                </div>
+                <!-- /Title -->
 
                 <!-- Content -->
                 @yield('content')
-				<!-- /Content -->
+                <!-- /Content -->
 
-				<!-- Footer -->
-                @include('layouts.footer')
-				<!-- /Footer -->
-			</div>
-		</div>
+            </div>
+            <!-- Footer -->
+            @include('layouts.footer')
+            <!-- /Footer -->
+        </div>
         <!-- /Main Content -->
 
     </div>

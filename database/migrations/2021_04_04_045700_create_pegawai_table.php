@@ -19,6 +19,7 @@ class CreatePegawaiTable extends Migration
             $table->enum('jk', ['Laki-Laki', 'Perempuan']);
             $table->date('tgl_lahir');
             $table->string('alamat');
+            $table->date('tgl_mulai');
             $table->string('telp');
             $table->string('no_rekening');
             $table->foreignId('user_id');

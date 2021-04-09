@@ -12,3 +12,8 @@
     </ol>
 </div>
 @endsection
+@section('content')
+    <div class="">
+        <p>{{ url()->current() . ' | ' . route('dashboard') }}</p>
+    </div>
+@endsection

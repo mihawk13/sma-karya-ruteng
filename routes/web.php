@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\http\Controllers\Bendahara\PegawaiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,3 +27,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::get('pegawai', [PegawaiController::class, 'index'])->name('pegawai');
+Route::get('pegawai/tambah', [PegawaiController::class, 'create'])->name('pegawai.tambah');
+Route::post('pegawai/tambah', [PegawaiController::class, 'store']);
+Route::get('pegawai/ubah/{id}', [PegawaiController::class, 'show'])->name('pegawai.ubah');
+Route::post('pegawai/ubah/{id}', [PegawaiController::class, 'update']);

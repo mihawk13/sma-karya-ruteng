@@ -22,7 +22,15 @@
 <!-- Fancy Dropdown JS -->
 <script src="{{ asset('assets/dist/js/dropdown-bootstrap-extended.js') }}"></script>
 
-@yield('scripts')
+@yield('script')
 
 <!-- Init JavaScript -->
 <script src="{{ asset('assets/dist/js/init.js') }}"></script>
+
+@yield('script-bottom')
+
+<script>
+    $(document).ready(function() {
+        $('.alert').delay(5000).fadeOut(350);
+    } );
+</script>

@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             'jk' => 'Perempuan',
             'tgl_lahir' => '1990-02-20',
             'alamat' => 'Panjer',
+            'tgl_mulai' => '2021-02-20',
             'telp' => '08123456789',
             'no_rekening' => '06548832',
             'user_id' => $user->id

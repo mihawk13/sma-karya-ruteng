@@ -12,10 +12,10 @@ class Pegawai extends Model
     protected $table = 'pegawai';
     public $timestamps = false;
 
-    protected $fillable = ['nama', 'jk', 'tgl_lahir', 'alamat', 'telp', 'no_rekening', 'user_id'];
+    protected $fillable = ['nama', 'jk', 'tgl_lahir', 'alamat', 'tgl_mulai', 'telp', 'no_rekening', 'user_id'];
 
     public function user()
     {
-        return $this->hasOne(User::class, 'user_id');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 }
