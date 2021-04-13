@@ -15,6 +15,7 @@ class CreateTunjanganTable extends Migration
     {
         Schema::create('tunjangan', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_jabatan');
             $table->string('fungsional');
             $table->string('jabatan');
             $table->string('pengabdian');
