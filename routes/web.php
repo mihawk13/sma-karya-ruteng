@@ -4,6 +4,7 @@ use App\Http\Controllers\Bendahara\JabatanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\Bendahara\PegawaiController;
+use App\Http\Controllers\Bendahara\PotonganController;
 use App\Http\Controllers\Bendahara\TunjanganController;
 
 /*
@@ -48,3 +49,9 @@ Route::get('tunjangan/tambah', [TunjanganController::class, 'create'])->name('tu
 Route::post('tunjangan/tambah', [TunjanganController::class, 'store']);
 Route::get('tunjangan/ubah/{id}', [TunjanganController::class, 'show'])->name('tunjangan.ubah');
 Route::post('tunjangan/ubah/{id}', [TunjanganController::class, 'update']);
+
+Route::get('potongan', [PotonganController::class, 'index'])->name('potongan');
+Route::get('potongan/tambah', [PotonganController::class, 'create'])->name('potongan.tambah');
+Route::post('potongan/tambah', [PotonganController::class, 'store']);
+Route::get('potongan/ubah/{id}', [PotonganController::class, 'show'])->name('potongan.ubah');
+Route::post('potongan/ubah/{id}', [PotonganController::class, 'update']);

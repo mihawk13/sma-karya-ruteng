@@ -17,7 +17,7 @@
             <a href="{{ route('tunjangan') }}" ><div class="pull-left"><i class="fa fa-money mr-20"></i><span class="right-nav-text">Data Tunjangan</span></div><div class="clearfix"></div></a>
         </li>
         <li>
-            <a href="{{ route('pegawai') }}" ><div class="pull-left"><i class="fa fa-cut mr-20"></i><span class="right-nav-text">Data Potongan</span></div><div class="clearfix"></div></a>
+            <a href="{{ route('potongan') }}" ><div class="pull-left"><i class="fa fa-cut mr-20"></i><span class="right-nav-text">Data Potongan</span></div><div class="clearfix"></div></a>
         </li>
         <li>
             <a href="{{ route('jabatan') }}" ><div class="pull-left"><i class="fa fa-university mr-20"></i><span class="right-nav-text">Data Jabatan</span></div><div class="clearfix"></div></a>
