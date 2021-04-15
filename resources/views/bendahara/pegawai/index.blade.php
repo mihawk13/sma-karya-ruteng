@@ -49,7 +49,7 @@
                                         <td>{{ $pg->jk }}</td>
                                         <td>{{ $pg->telp }}</td>
                                         <td>{{ $pg->tgl_mulai }}</td>
-                                        <td>{{ $pg->user->jabatan }}</td>
+                                        <td>{{ $pg->jabatan }}</td>
                                         <td>{{ $pg->no_rekening }}</td>
                                         <td>
                                             <center>

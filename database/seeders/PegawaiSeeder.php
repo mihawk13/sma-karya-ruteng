@@ -17,13 +17,8 @@ class PegawaiSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::create([
-            'username' => 'bendahara',
-            'password' => bcrypt('bendahara'),
-            'jabatan' => 'Bendahara',
-        ]);
 
-        Pegawai::create([
+        $pgw = Pegawai::create([
             'nama' => 'Bendahara',
             'jk' => 'Perempuan',
             'tgl_lahir' => '1990-02-20',
@@ -31,19 +26,20 @@ class PegawaiSeeder extends Seeder
             'tgl_mulai' => '2021-02-20',
             'telp' => '08123456789',
             'no_rekening' => '06548832',
-            'user_id' => $user->id
+            'jabatan' => 'Bendahara',
+        ]);
+
+        User::create([
+            'username' => 'bendahara',
+            'password' => bcrypt('bendahara'),
+            'pegawai_id' => $pgw->id
         ]);
 
         $faker = Faker::create('id_ID');
 
-        for ($i=0; $i < 5; $i++) {
-            $user = User::create([
-                'username' => 'gr' . $i,
-                'password' => bcrypt('gr' . $i),
+        for ($i = 0; $i < 9; $i++) {
+            $pgw = Pegawai::create([
                 'jabatan' => 'Guru',
-            ]);
-
-            Pegawai::create([
                 'nama' => $faker->name,
                 'jk' => 'Perempuan',
                 'tgl_lahir' => '1990-02-20',
@@ -51,9 +47,13 @@ class PegawaiSeeder extends Seeder
                 'tgl_mulai' => '2021-02-20',
                 'telp' => $faker->phoneNumber,
                 'no_rekening' => $faker->creditCardNumber,
-                'user_id' => $user->id
             ]);
-        }
 
+            // User::create([
+            //     'username' => 'gr' . $i,
+            //     'password' => bcrypt('gr' . $i),
+            //     'pegawai_id' => $pgw->id
+            // ]);
+        }
     }
 }

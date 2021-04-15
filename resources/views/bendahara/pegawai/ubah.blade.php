@@ -29,13 +29,22 @@
         <div class="panel panel-default card-view">
             <div class="panel-wrapper collapse in">
                 <div class="panel-body">
-                    <form data-toggle="validator" role="form" action="{{ route('pegawai.ubah', $pgw->user_id) }}" method="POST">
+                    <form data-toggle="validator" role="form" action="{{ route('pegawai.ubah', $pgw->id) }}" method="POST">
                         @csrf
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Ubah Data
                                 Pegawai</h5>
                         </div>
                         <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label mb-10">Jabatan</label>
+                                <select name="jabatan" class="form-control" required>
+                                    <option value="">--Pilih Jabatan--</option>
+                                    @foreach (getJabatan() as $jbt)
+                                        <option @if($jbt == $pgw->jabatan) selected @endif value="{{ $jbt }}">{{ $jbt }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label class="control-label mb-10">Nama</label>
                                 <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Lengkap"
@@ -78,7 +87,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label mb-10">No Telepone</label>
-                                <input type="number" class="form-control" name="telp" placeholder="Masukkan No Telepone"
+                                <input type="text" class="form-control" name="telp" placeholder="Masukkan No Telepone"
                                     required value="{{ $pgw->telp }}" data-error="Format Telepone Tidak Valid">
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -88,26 +97,6 @@
                                     placeholder="Masukkan No Rekening" required value="{{ $pgw->no_rekening }}"
                                     data-error="Format No Rekening Tidak Valid">
                                 <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label mb-10">Jabatan</label>
-                                <select name="jabatan" class="form-control" required>
-                                    <option value="">--Pilih Jabatan--</option>
-                                    @foreach (getJabatan() as $jbt)
-                                        <option @if($jbt == $pgw->user->jabatan) selected @endif value="{{ $jbt }}">{{ $jbt }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label mb-10">Username</label>
-                                <input type="text" class="form-control" name="user" placeholder="Masukkan Username"
-                                    readonly value="{{ $pgw->user->username }}">
-                                    <small>username tidak bisa diganti</small>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label mb-10">Password</label>
-                                <input type="password" class="form-control" name="pass" placeholder="Masukkan Password">
-                                <small>kosongkan jika tidak diganti</small>
                             </div>
                         </div>
                         <div class="modal-footer">

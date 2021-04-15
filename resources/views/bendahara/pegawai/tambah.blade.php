@@ -37,6 +37,15 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
+                                <label class="control-label mb-10">Jabatan</label>
+                                <select name="jabatan" class="form-control" required>
+                                    <option value="">--Pilih Jabatan--</option>
+                                    @foreach (getJabatan() as $jbt)
+                                        <option value="{{ $jbt }}">{{ $jbt }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label mb-10">Nama</label>
                                 <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Lengkap"
                                     required value="{{ old('nama') }}">
@@ -85,25 +94,6 @@
                                     placeholder="Masukkan No Rekening" required required
                                     data-error="Format No Rekening Tidak Valid" value="{{ old('rekening') }}" >
                                 <div class="help-block with-errors"></div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label mb-10">Jabatan</label>
-                                <select name="jabatan" class="form-control" required>
-                                    <option value="">--Pilih Jabatan--</option>
-                                    @foreach (getJabatan() as $jbt)
-                                        <option value="{{ $jbt }}">{{ $jbt }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label mb-10">Username</label>
-                                <input type="text" class="form-control" name="user" placeholder="Masukkan Username"
-                                    required>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label mb-10">Password</label>
-                                <input type="password" class="form-control" name="pass" placeholder="Masukkan Password"
-                                    required>
                             </div>
                         </div>
                         <div class="modal-footer">

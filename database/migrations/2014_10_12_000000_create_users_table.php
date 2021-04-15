@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             // $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('jabatan');
+            $table->foreignId('pegawai_id');
             $table->rememberToken();
             $table->timestamps();
         });

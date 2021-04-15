@@ -15,6 +15,7 @@ class CreatePegawaiTable extends Migration
     {
         Schema::create('pegawai', function (Blueprint $table) {
             $table->id();
+            $table->string('jabatan');
             $table->string('nama');
             $table->enum('jk', ['Laki-Laki', 'Perempuan']);
             $table->date('tgl_lahir');
@@ -22,7 +23,6 @@ class CreatePegawaiTable extends Migration
             $table->date('tgl_mulai');
             $table->string('telp');
             $table->string('no_rekening');
-            $table->foreignId('user_id');
         });
     }
 

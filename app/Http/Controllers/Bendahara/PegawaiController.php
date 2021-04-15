@@ -39,13 +39,8 @@ class PegawaiController extends Controller
     public function store(Request $req)
     {
         try {
-            $user = User::create([
-                'username' => $req->user,
-                'password' => bcrypt($req->pass),
-                'jabatan' => $req->jabatan,
-            ]);
-
             Pegawai::create([
+                'jabatan' => $req->jabatan,
                 'nama' => $req->nama,
                 'jk' => $req->jk,
                 'tgl_lahir' => $req->tgl,
@@ -53,12 +48,11 @@ class PegawaiController extends Controller
                 'tgl_mulai' => $req->tglMulai,
                 'telp' => $req->telp,
                 'no_rekening' => $req->rekening,
-                'user_id' => $user->id
             ]);
 
             return redirect()->route('pegawai')->with('berhasil', 'Data berhasil ditambah!');
         } catch (\Exception $e) {
-            return redirect()->back()->withInput()->with('gagal', 'Username sudah digunakan!, gunakan username yang lain');
+            return redirect()->back()->withInput()->with('gagal', $e->getMessage());
         }
     }
 
@@ -84,18 +78,8 @@ class PegawaiController extends Controller
     public function update(Request $req, $id)
     {
         try {
-
-            if (isset($req->pass)) {
-                User::where('id', $id)->update([
-                    'password' => bcrypt($req->pass)
-                ]);
-            }
-
-            User::where('id', $id)->update([
-                'jabatan' => $req->jabatan
-            ]);
-
             Pegawai::where('id', $id)->update([
+                'jabatan' => $req->jabatan,
                 'nama' => $req->nama,
                 'jk' => $req->jk,
                 'tgl_lahir' => $req->tgl,
