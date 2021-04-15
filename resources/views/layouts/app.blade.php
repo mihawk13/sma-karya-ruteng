@@ -16,6 +16,7 @@
             -moz-appearance: textfield;
         }
     </style>
+    @livewireStyles
 </head>
 
 <body>
@@ -62,7 +63,8 @@
 
     @include('layouts.scripts')
 
-
+    @livewireScripts
+    @stack('scripts')
 </body>
 
 </html>

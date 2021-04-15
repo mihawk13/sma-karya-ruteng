@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\http\Controllers\Bendahara\PegawaiController;
 use App\Http\Controllers\Bendahara\PotonganController;
 use App\Http\Controllers\Bendahara\TunjanganController;
+use App\Http\Controllers\Bendahara\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,12 @@ Route::get('pegawai/tambah', [PegawaiController::class, 'create'])->name('pegawa
 Route::post('pegawai/tambah', [PegawaiController::class, 'store']);
 Route::get('pegawai/ubah/{id}', [PegawaiController::class, 'show'])->name('pegawai.ubah');
 Route::post('pegawai/ubah/{id}', [PegawaiController::class, 'update']);
+
+Route::get('user', [UserController::class, 'index'])->name('user');
+Route::get('user/tambah', [UserController::class, 'create'])->name('user.tambah');
+Route::post('user/tambah', [UserController::class, 'store']);
+Route::get('user/ubah/{id}', [UserController::class, 'show'])->name('user.ubah');
+Route::post('user/ubah/{id}', [UserController::class, 'update']);
 
 Route::get('jabatan', [JabatanController::class, 'index'])->name('jabatan');
 Route::get('jabatan/tambah', [JabatanController::class, 'create'])->name('jabatan.tambah');

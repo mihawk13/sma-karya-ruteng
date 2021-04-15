@@ -11,6 +11,9 @@
             <a href="{{ route('pegawai') }}" ><div class="pull-left"><i class="fa fa-users mr-20"></i><span class="right-nav-text">Pegawai</span></div><div class="clearfix"></div></a>
         </li>
         <li>
+            <a href="{{ route('user') }}" ><div class="pull-left"><i class="fa fa-user mr-20"></i><span class="right-nav-text">User</span></div><div class="clearfix"></div></a>
+        </li>
+        <li>
             <a href="{{ route('pegawai') }}" ><div class="pull-left"><i class="fa fa-american-sign-language-interpreting mr-20"></i><span class="right-nav-text">Absensi</span></div><div class="clearfix"></div></a>
         </li>
         <li>
