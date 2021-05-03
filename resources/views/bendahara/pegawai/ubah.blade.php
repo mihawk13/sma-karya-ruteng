@@ -46,6 +46,11 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label class="control-label mb-10">NIP</label>
+                                <input type="text" class="form-control" name="nip" placeholder="Masukkan Nomor Induk Pegawai"
+                                    readonly value="{{ $pgw->nip }}">
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label mb-10">Nama</label>
                                 <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Lengkap"
                                     required value="{{ $pgw->nama }}">

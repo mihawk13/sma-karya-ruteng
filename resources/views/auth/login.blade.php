@@ -35,7 +35,7 @@
             <div class="wrap-login100">
                 <form class="login100-form validate-form">
                     <span class="login100-form-logo">
-                        <i class="zmdi zmdi-landscape"></i>
+                        <img src="assets/dist/img/tutwuri.png" height="100%" width="100%" alt="">
                     </span>
 
                     <span class="login100-form-title p-b-34 p-t-27">

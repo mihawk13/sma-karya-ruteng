@@ -15,6 +15,7 @@ class CreatePegawaiTable extends Migration
     {
         Schema::create('pegawai', function (Blueprint $table) {
             $table->id();
+            $table->string('nip');
             $table->string('jabatan');
             $table->string('nama');
             $table->enum('jk', ['Laki-Laki', 'Perempuan']);

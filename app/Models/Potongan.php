@@ -12,10 +12,10 @@ class Potongan extends Model
     protected $table = 'potongan';
     public $timestamps = false;
 
-    protected $fillable = ['pegawai_id', 'pot_simpan_pinjam', 'pot_konsumsi_wajib', 'uang_duka'];
+    protected $fillable = ['nip', 'pot_simpan_pinjam', 'pot_konsumsi_wajib', 'uang_duka'];
 
     public function pegawai()
     {
-        return $this->hasOne(Pegawai::class, 'id', 'pegawai_id');
+        return $this->hasOne(Pegawai::class, 'nip', 'nip');
     }
 }

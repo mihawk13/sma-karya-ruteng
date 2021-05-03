@@ -6,7 +6,7 @@
 </div>
 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
     <ol class="breadcrumb">
-        <li><a href="index.html">Bendahara</a></li>
+        <li><a href="/">Bendahara</a></li>
         <li class="active"><span>Pegawai</span></li>
     </ol>
 </div>
@@ -33,6 +33,7 @@
                             <table id="datable_1" class="table table-hover display  pb-30">
                                 <thead>
                                     <tr>
+                                        <th>NIP</th>
                                         <th>Nama Pegawai</th>
                                         <th>JK</th>
                                         <th>No Telp</th>
@@ -45,6 +46,7 @@
                                 <tbody>
                                     @foreach ($pegawai as $pg)
                                     <tr>
+                                        <td>{{ $pg->nip }}</td>
                                         <td>{{ $pg->nama }}</td>
                                         <td>{{ $pg->jk }}</td>
                                         <td>{{ $pg->telp }}</td>

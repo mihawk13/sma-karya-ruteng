@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Gaji extends Model
 {
     use HasFactory;
+
+    protected $table = 'gaji';
+    public $timestamps = false;
+
+    protected $fillable = ['nip', 'periode', 'gaji_pokok', 'tanggal', 'bonus', 'potongan', 'tunjangan', 'total_gaji'];
+
+    public function pegawai()
+    {
+        return $this->hasOne(Pegawai::class, 'nip', 'nip');
+    }
 }

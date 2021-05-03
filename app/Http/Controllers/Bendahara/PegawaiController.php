@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Bendahara;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pegawai;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class PegawaiController extends Controller
@@ -40,6 +39,7 @@ class PegawaiController extends Controller
     {
         try {
             Pegawai::create([
+                'nip' => $req->nip,
                 'jabatan' => $req->jabatan,
                 'nama' => $req->nama,
                 'jk' => $req->jk,

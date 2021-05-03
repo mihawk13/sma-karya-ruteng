@@ -15,10 +15,12 @@ class CreateCutiTable extends Migration
     {
         Schema::create('cuti', function (Blueprint $table) {
             $table->id();
-            $table->string('periode');
-            $table->string('tahun');
+            $table->foreignId('nip');
+            $table->string('periode', 10);
+            $table->string('tahun', 4);
             $table->date('awal_cuti');
             $table->date('akhir_cuti');
+            $table->string('file');
             $table->string('keterangan');
         });
     }

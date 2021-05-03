@@ -15,6 +15,7 @@ class CreateGajiTable extends Migration
     {
         Schema::create('gaji', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('nip');
             $table->string('periode');
             $table->date('tanggal');
             $table->string('gaji_pokok');

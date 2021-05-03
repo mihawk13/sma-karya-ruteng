@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Bendahara;
 
 use App\Http\Controllers\Controller;
-use App\Models\Pegawai;
 use App\Models\User;
 use Illuminate\Http\Request;
 

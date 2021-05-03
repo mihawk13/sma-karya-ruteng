@@ -19,6 +19,7 @@ class PegawaiSeeder extends Seeder
     {
 
         $pgw = Pegawai::create([
+            'nip' => '1234567896352',
             'nama' => 'Bendahara',
             'jk' => 'Perempuan',
             'tgl_lahir' => '1990-02-20',
@@ -39,6 +40,7 @@ class PegawaiSeeder extends Seeder
 
         for ($i = 0; $i < 9; $i++) {
             $pgw = Pegawai::create([
+                'nip' => $faker->isbn13,
                 'jabatan' => 'Guru',
                 'nama' => $faker->name,
                 'jk' => 'Perempuan',

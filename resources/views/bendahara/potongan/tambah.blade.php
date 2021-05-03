@@ -40,10 +40,10 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label class="control-label mb-10">Nama Pegawai</label>
-                                <select name="pgw" class="form-control select2" required>
+                                <select name="nip" class="form-control select2" required>
                                     <option value="">--Pilih Pegawai--</option>
                                     @foreach ($pegawai as $pgw)
-                                        <option value="{{ $pgw->id }}">{{ $pgw->nama }}</option>
+                                        <option value="{{ $pgw->nip }}">{{ $pgw->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>

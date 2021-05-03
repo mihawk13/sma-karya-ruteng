@@ -41,7 +41,7 @@ class PotonganController extends Controller
     {
         try {
             Potongan::create([
-                'pegawai_id' => $req->pgw,
+                'nip' => $req->nip,
                 'pot_simpan_pinjam' => $req->simpan_pinjam,
                 'pot_konsumsi_wajib' => $req->konsumsi_wajib,
                 'uang_duka' => $req->uang_duka
@@ -77,7 +77,7 @@ class PotonganController extends Controller
     {
         try {
             Potongan::where('id', $id)->update([
-                'pegawai_id' => $req->pgw,
+                'nip' => $req->nip,
                 'pot_simpan_pinjam' => $req->simpan_pinjam,
                 'pot_konsumsi_wajib' => $req->konsumsi_wajib,
                 'uang_duka' => $req->uang_duka

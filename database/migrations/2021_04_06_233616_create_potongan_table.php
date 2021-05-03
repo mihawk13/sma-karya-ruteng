@@ -15,7 +15,7 @@ class CreatePotonganTable extends Migration
     {
         Schema::create('potongan', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pegawai_id');
+            $table->foreignId('nip');
             $table->string('pot_simpan_pinjam');
             $table->string('pot_konsumsi_wajib');
             $table->string('uang_duka');

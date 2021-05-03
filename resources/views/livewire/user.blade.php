@@ -1,6 +1,6 @@
 <div>
     <div class="form-group" wire:ignore>
-        <label class="control-label mb-10">Nama Pegawai {{ $pgw }}</label>
+        <label class="control-label mb-10">Nama Pegawai</label>
         <select name="pgw_id" id="pgw_id" class="form-control select2" required>
             <option value="">--Pilih Pegawai--</option>
             @foreach ($pegawai as $pgw)
