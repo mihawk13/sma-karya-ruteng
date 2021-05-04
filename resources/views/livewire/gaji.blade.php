@@ -26,7 +26,7 @@
     <div class="form-group">
         <label class="control-label mb-10">Bonus Lembur</label>
         <input type="number" class="form-control" name="bonus_lembur" placeholder="Bonus Lembur"
-            required wire:model="bonus">
+            readonly value="{{ $bonus }}">
     </div>
     <div class="form-group">
         <label class="control-label mb-10">Total Gaji</label>

@@ -75,6 +75,7 @@
                                         <th>Jam Masuk</th>
                                         <th>Jam Pulang</th>
                                         <th>Keterlambatan</th>
+                                        <th>Lembur</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -85,6 +86,7 @@
                                         <td>{{ $abs->jam_masuk }}</td>
                                         <td>{{ $abs->jam_pulang }}</td>
                                         <td>{{ \Carbon\Carbon::parse($abs->jam_masuk)->floatDiffInMinutes("07:30") . ' menit' }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($abs->jam_pulang)->floatDiffInHours("13:00") . ' jam' }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
