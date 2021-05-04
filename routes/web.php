@@ -4,6 +4,7 @@ use App\Http\Controllers\Bendahara\AbsensiController;
 use App\Http\Controllers\Bendahara\CutiController;
 use App\Http\Controllers\Bendahara\GajiController;
 use App\Http\Controllers\Bendahara\JabatanController;
+use App\Http\Controllers\Bendahara\LaporanController;
 use App\Http\Controllers\Bendahara\MasaKerjaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Bendahara\TunjanganController;
 use App\Http\Controllers\Bendahara\UserController;
 use App\Http\Controllers\Guru\AbsensiSayaController;
 use App\Http\Controllers\Guru\CutiSayaController;
+use App\Http\Controllers\Laporan\PDF_Cuti;
 use App\Http\Middleware\Bendahara;
 
 /*
@@ -86,6 +88,17 @@ Route::middleware(['bendahara', 'auth'])->prefix('bendahara')->group(function ()
     Route::post('gaji/tambah', [GajiController::class, 'store']);
     Route::get('gaji/ubah/{id}', [GajiController::class, 'show'])->name('gaji.ubah');
     Route::post('gaji/ubah/{id}', [GajiController::class, 'update']);
+
+    Route::get('laporan-gaji', [LaporanController::class, 'gaji'])->name('lap.gaji');
+
+    Route::get('laporan-cuti', [LaporanController::class, 'cuti'])->name('lap.cuti');
+    Route::post('laporan-cuti', [LaporanController::class, 'postCuti']);
+    Route::get('pdf-cuti/{tahun}', [PDF_Cuti::class, 'pdf'])->name('lap.cuti.cetak');
+
+    Route::get('laporan-lembur', [LaporanController::class, 'lembur'])->name('lap.lembur');
+    Route::get('laporan-keterlambatan', [LaporanController::class, 'keterlambatan'])->name('lap.keterlambatan');
+    Route::post('laporan-keterlambatan', [LaporanController::class, 'postKeterlambatan']);
+
 });
 
 Route::middleware(['guru', 'auth'])->prefix('guru')->group(function () {

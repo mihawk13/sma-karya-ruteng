@@ -82,25 +82,16 @@
             </a>
             <ul id="ecom_dr" class="collapse collapse-level-1">
                 <li>
-                    <a href="e-commerce.html">Dashboard</a>
+                    <a href="{{ route('lap.cuti') }}">Cuti</a>
                 </li>
                 <li>
-                    <a href="product.html">Products</a>
+                    <a href="{{ route('lap.gaji') }}">Rekap Gaji</a>
                 </li>
                 <li>
-                    <a href="product-detail.html">Product Detail</a>
+                    <a href="{{ route('lap.lembur') }}">Lembur</a>
                 </li>
                 <li>
-                    <a href="add-products.html">Add Product</a>
-                </li>
-                <li>
-                    <a href="product-orders.html">Orders</a>
-                </li>
-                <li>
-                    <a href="product-cart.html">Cart</a>
-                </li>
-                <li>
-                    <a href="product-checkout.html">Checkout</a>
+                    <a href="{{ route('lap.keterlambatan') }}">Keterlambatan</a>
                 </li>
             </ul>
         </li>

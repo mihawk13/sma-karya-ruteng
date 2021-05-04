@@ -18,7 +18,7 @@ class CutiController extends Controller
     {
         $tahun = Cuti::select('tahun')->distinct()->get();
         $cuti = [];//Cuti::all();
-        $thn = "";
+        $thn = 0;
         return view('bendahara.cuti.index', compact('cuti', 'tahun', 'thn'));
     }
 
