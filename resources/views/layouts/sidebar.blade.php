@@ -112,7 +112,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('pegawai') }}">
+            <a href="{{ route('gaji.guru') }}">
                 <div class="pull-left"><i class="fa fa-usd mr-20"></i><span class="right-nav-text">Data Gaji</span>
                 </div>
                 <div class="clearfix"></div>

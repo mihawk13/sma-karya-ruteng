@@ -14,6 +14,7 @@ use App\Http\Controllers\Bendahara\TunjanganController;
 use App\Http\Controllers\Bendahara\UserController;
 use App\Http\Controllers\Guru\AbsensiSayaController;
 use App\Http\Controllers\Guru\CutiSayaController;
+use App\Http\Controllers\Guru\GajiSayaController;
 use App\Http\Controllers\Laporan\PDF_Cuti;
 use App\Http\Controllers\Laporan\PDF_Gaji;
 use App\Http\Controllers\Laporan\PDF_Keterlambatan;
@@ -118,4 +119,13 @@ Route::middleware(['guru', 'auth'])->prefix('guru')->group(function () {
     Route::post('cuti/tambah', [CutiSayaController::class, 'store']);
     Route::get('cuti/ubah/{id}', [CutiSayaController::class, 'show'])->name('cuti.guru.ubah');
     Route::post('cuti/ubah/{id}', [CutiSayaController::class, 'update']);
+
+    Route::get('gaji', [GajiSayaController::class, 'index'])->name('gaji.guru');
+    Route::post('gaji', [GajiSayaController::class, 'pdf']);
+
+
+    // Route::get('gaji/tambah', [GajiSayaController::class, 'create'])->name('gaji.guru.tambah');
+    Route::post('gaji/tambah', [GajiSayaController::class, 'store']);
+    Route::get('gaji/ubah/{id}', [GajiSayaController::class, 'show'])->name('gaji.guru.ubah');
+    Route::post('gaji/ubah/{id}', [GajiSayaController::class, 'update']);
 });
