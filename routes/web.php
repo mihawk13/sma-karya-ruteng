@@ -15,6 +15,7 @@ use App\Http\Controllers\Bendahara\UserController;
 use App\Http\Controllers\Guru\AbsensiSayaController;
 use App\Http\Controllers\Guru\CutiSayaController;
 use App\Http\Controllers\Guru\GajiSayaController;
+use App\Http\Controllers\Kepsek\LaporanController as KepsekLaporanController;
 use App\Http\Controllers\Laporan\PDF_Cuti;
 use App\Http\Controllers\Laporan\PDF_Gaji;
 use App\Http\Controllers\Laporan\PDF_Keterlambatan;
@@ -128,4 +129,23 @@ Route::middleware(['guru', 'auth'])->prefix('guru')->group(function () {
     Route::post('gaji/tambah', [GajiSayaController::class, 'store']);
     Route::get('gaji/ubah/{id}', [GajiSayaController::class, 'show'])->name('gaji.guru.ubah');
     Route::post('gaji/ubah/{id}', [GajiSayaController::class, 'update']);
+});
+
+Route::middleware(['kepsek', 'auth'])->prefix('kepsek')->group(function () {
+    Route::get('laporan-gaji', [KepsekLaporanController::class, 'gaji'])->name('kepsek.gaji');
+    Route::post('laporan-gaji', [KepsekLaporanController::class, 'postGaji']);
+    Route::get('laporan-gaji/{tahun}/{bulan}', [PDF_Gaji::class, 'pdf'])->name('kepsek.gaji.cetak');
+
+    Route::get('laporan-cuti', [KepsekLaporanController::class, 'cuti'])->name('kepsek.cuti');
+    Route::post('laporan-cuti', [KepsekLaporanController::class, 'cuti_lihat']);
+    Route::get('pdf-cuti/{tahun}', [PDF_Cuti::class, 'pdf'])->name('kepsek.cuti.cetak');
+
+    Route::get('laporan-lembur', [KepsekLaporanController::class, 'lembur'])->name('kepsek.lembur');
+    Route::post('laporan-lembur', [KepsekLaporanController::class, 'postLembur']);
+    Route::get('laporan-lembur/{tahun}/{periode}', [PDF_Lembur::class, 'pdf'])->name('kepsek.cetak');
+
+    Route::get('laporan-keterlambatan', [KepsekLaporanController::class, 'keterlambatan'])->name('kepsek.terlambat');
+    Route::post('laporan-keterlambatan', [KepsekLaporanController::class, 'postKeterlambatan']);
+    Route::get('laporan-keterlambatan/{tahun}/{periode}', [PDF_Keterlambatan::class, 'pdf'])->name('kepsek.keterlambatan.cetak');
+
 });

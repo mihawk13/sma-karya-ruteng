@@ -119,5 +119,35 @@
             </a>
         </li>
         @endif
+        @if (auth()->user()->pegawai->jabatan == 'Kepala Sekolah')
+        <li>
+            <a href="{{ route('kepsek.gaji') }}">
+                <div class="pull-left"><i class="fa fa-american-sign-language-interpreting mr-20"></i><span
+                        class="right-nav-text">Laporan Rekap Gaji</span></div>
+                <div class="clearfix"></div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('kepsek.cuti') }}">
+                <div class="pull-left"><i class="fa fa-sign-language mr-20"></i><span class="right-nav-text">Laporan
+                        Cuti</span></div>
+                <div class="clearfix"></div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('kepsek.lembur') }}">
+                <div class="pull-left"><i class="fa fa-usd mr-20"></i><span class="right-nav-text">Laporan Lembur</span>
+                </div>
+                <div class="clearfix"></div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('kepsek.terlambat') }}">
+                <div class="pull-left"><i class="fa fa-usd mr-20"></i><span class="right-nav-text">Laporan Keterlambatan</span>
+                </div>
+                <div class="clearfix"></div>
+            </a>
+        </li>
+        @endif
     </ul>
 </div>
