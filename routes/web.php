@@ -15,7 +15,9 @@ use App\Http\Controllers\Bendahara\UserController;
 use App\Http\Controllers\Guru\AbsensiSayaController;
 use App\Http\Controllers\Guru\CutiSayaController;
 use App\Http\Controllers\Laporan\PDF_Cuti;
-use App\Http\Middleware\Bendahara;
+use App\Http\Controllers\Laporan\PDF_Gaji;
+use App\Http\Controllers\Laporan\PDF_Keterlambatan;
+use App\Http\Controllers\Laporan\PDF_Lembur;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,14 +92,20 @@ Route::middleware(['bendahara', 'auth'])->prefix('bendahara')->group(function ()
     Route::post('gaji/ubah/{id}', [GajiController::class, 'update']);
 
     Route::get('laporan-gaji', [LaporanController::class, 'gaji'])->name('lap.gaji');
+    Route::post('laporan-gaji', [LaporanController::class, 'postGaji']);
+    Route::get('laporan-gaji/{tahun}/{bulan}', [PDF_Gaji::class, 'pdf'])->name('lap.gaji.cetak');
 
     Route::get('laporan-cuti', [LaporanController::class, 'cuti'])->name('lap.cuti');
     Route::post('laporan-cuti', [LaporanController::class, 'postCuti']);
     Route::get('pdf-cuti/{tahun}', [PDF_Cuti::class, 'pdf'])->name('lap.cuti.cetak');
 
     Route::get('laporan-lembur', [LaporanController::class, 'lembur'])->name('lap.lembur');
+    Route::post('laporan-lembur', [LaporanController::class, 'postLembur']);
+    Route::get('laporan-lembur/{tahun}/{periode}', [PDF_Lembur::class, 'pdf'])->name('lap.lembur.cetak');
+
     Route::get('laporan-keterlambatan', [LaporanController::class, 'keterlambatan'])->name('lap.keterlambatan');
     Route::post('laporan-keterlambatan', [LaporanController::class, 'postKeterlambatan']);
+    Route::get('laporan-keterlambatan/{tahun}/{periode}', [PDF_Keterlambatan::class, 'pdf'])->name('lap.terlambat.cetak');
 
 });
 

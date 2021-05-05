@@ -2,12 +2,12 @@
 
 @section('breadcrumb')
 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-    <h5 class="txt-dark">Laporan Gaji</h5>
+    <h5 class="txt-dark">Laporan Lembur</h5>
 </div>
 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
     <ol class="breadcrumb">
         <li><a href="/">Bendahara</a></li>
-        <li class="active"><span>Laporan Gaji</span></li>
+        <li class="active"><span>Laporan Lembur</span></li>
     </ol>
 </div>
 @endsection
@@ -33,9 +33,9 @@
                         </select>
                     </div>
                     <div class="form-group col-md-3">
-                        <label class="control-label mb-10">Bulan</label>
-                        <select class="form-control select2" name="bulan" required>
-                            <option value="">-- Pilih Bulan --</option>
+                        <label class="control-label mb-10">Periode</label>
+                        <select class="form-control select2" name="periode" required>
+                            <option value="">-- Pilih Periode --</option>
                             @foreach ($periode as $pr)
                             <option @if($prd == $pr->periode) selected @endif value="{{ $pr->periode }}">{{ $pr->periode }}</option>
                             @endforeach
@@ -45,7 +45,7 @@
                         <label class="control-label text-hide mb-15">-</label><br>
                         <button type="submit" class="btn btn-success">Lihat</button>
                         @if ($thn != 0)
-                        <a target="_blank" href="{{ route('lap.gaji.cetak', [$thn, $prd]) }}" class="btn btn-danger">Cetak</a>
+                        <a target="_blank" href="{{ route('lap.lembur.cetak', [$thn, $prd]) }}" class="btn btn-danger">Cetak</a>
                         @endif
                     </div>
                 </form>
@@ -60,24 +60,20 @@
                                         <th>No</th>
                                         <th>Nama Pegawai</th>
                                         <th>Periode</th>
-                                        <th>Gaji Pokok</th>
-                                        <th>Tunjangan</th>
-                                        <th>Bonus</th>
-                                        <th>Potongan</th>
-                                        <th>Total Gaji</th>
+                                        <th>Tahun</th>
+                                        <th>Lama Lembur / Jam</th>
+                                        <th>Lama Lembur / Bulan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($gaji as $gj)
+                                    @foreach ($absensi as $abs)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $gj->pegawai->nama }}</td>
-                                        <td>{{ $gj->periode }}</td>
-                                        <td>{{ number_format($gj->gaji_pokok) }}</td>
-                                        <td>{{ number_format($gj->tunjangan) }}</td>
-                                        <td>{{ number_format($gj->bonus) }}</td>
-                                        <td>{{ number_format($gj->potongan) }}</td>
-                                        <td>{{ number_format($gj->total_gaji) }}</td>
+                                        <td>{{ $abs->nama }}</td>
+                                        <td>{{ $abs->periode }}</td>
+                                        <td>{{ $abs->tahun }}</td>
+                                        <td>{{ $abs->jam_lembur }}</td>
+                                        <td>{{ $abs->jml_lembur }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

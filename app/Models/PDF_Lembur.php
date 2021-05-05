@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Codedge\Fpdf\Fpdf\Fpdf;
 
-class PDF_Cuti extends Fpdf
+class PDF_Lembur extends Fpdf
 {
     public function Header()
     {
         $this->SetFont('Arial', 'B', 12);
         $this->Cell(185, 0, 'SMA KARYA RUTENG', 0, 0, 'C');
         $this->ln(10);
-        $this->Cell(185, 0, 'LAPORAN CUTI',0, 0, 'C');
+        $this->Cell(185, 0, 'LAPORAN LEMBUR',0, 0, 'C');
         $this->ln(10);
     }
 

@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Laporan;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cuti;
-use Illuminate\Http\Request;
 
 class PDF_Cuti extends Controller
 {
-
     protected $pdf;
 
     public function __construct(\App\Models\PDF_Cuti $fpdf)
