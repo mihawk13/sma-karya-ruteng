@@ -8,7 +8,7 @@ use App\Http\Controllers\Bendahara\LaporanController;
 use App\Http\Controllers\Bendahara\MasaKerjaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\http\Controllers\Bendahara\PegawaiController;
+use App\Http\Controllers\Bendahara\PegawaiController;
 use App\Http\Controllers\Bendahara\PotonganController;
 use App\Http\Controllers\Bendahara\TunjanganController;
 use App\Http\Controllers\Bendahara\UserController;

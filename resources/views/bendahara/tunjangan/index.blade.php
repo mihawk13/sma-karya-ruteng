@@ -79,8 +79,8 @@
 @section('script')
 <script>
     function openLink(id) {
-        let url = "{{ route('tunjangan.ubah', 'id') }}"
-        url = url.replace('id', id)
+        let url = "{{ route('tunjangan.ubah', 'ids') }}"
+        url = url.replace('ids', id)
         // console.log();
         window.location.href = url
     }

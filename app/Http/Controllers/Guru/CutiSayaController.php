@@ -53,7 +53,7 @@ class CutiSayaController extends Controller
 
             $imagename = strtotime(Carbon::now()) . '.' . $file->extension();
             // utk hosting, public dihapus
-            Storage::putFileAs('public/cuti', $file, $imagename);
+            Storage::putFileAs('cuti', $file, $imagename);
 
             Cuti::create([
                 'nip' => $nip,
@@ -101,7 +101,7 @@ class CutiSayaController extends Controller
 
                 $imagename = strtotime(Carbon::now()) . '.' . $file->extension();
                 // utk hosting, public dihapus
-                Storage::putFileAs('public/cuti', $file, $imagename);
+                Storage::putFileAs('cuti', $file, $imagename);
 
                 Cuti::where('id', $id)->update([
                     'file' => $imagename,
