@@ -18,8 +18,9 @@ class GajiSayaController extends Controller
 
     public function index()
     {
-        $tahun = Gaji::select(DB::raw('YEAR(tanggal) as tahun'))->distinct()->get();
-        $periode = Gaji::select('periode')->distinct()->get();
+        $nip = auth()->user()->pegawai->nip;
+        $tahun = Gaji::where('nip', $nip)->select(DB::raw('YEAR(tanggal) as tahun'))->distinct()->get();
+        $periode = Gaji::where('nip', $nip)->select('periode')->distinct()->get();
         $gaji = [];
         $thn = "";
         $prd = "";
