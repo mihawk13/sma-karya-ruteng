@@ -1,6 +1,6 @@
 /*Dashboard Init*/
- 
-"use strict"; 
+
+"use strict";
 
 /*****Ready function start*****/
 $(document).ready(function(){
@@ -157,11 +157,11 @@ $(document).ready(function(){
 				}
 			]
 		};
-		
+
 		var hBar = new Chart(ctx2, {
 			type:"bar",
 			data:data2,
-			
+
 			options: {
 				tooltips: {
 					mode:"label"
@@ -187,7 +187,7 @@ $(document).ready(function(){
 							fontColor:"#878787"
 						}
 					}],
-					
+
 				},
 				elements:{
 					point: {
@@ -202,13 +202,13 @@ $(document).ready(function(){
 				legend: {
 					display: false,
 				},
-				
+
 				tooltip: {
 					backgroundColor:'rgba(33,33,33,1)',
 					cornerRadius:0,
 					footerFontFamily:"'Poppins'"
 				}
-				
+
 			}
 		});
 	}
@@ -231,7 +231,7 @@ $(document).ready(function(){
 			labelColor: '#878787',
 		});
 		$("div svg text").attr("style","font-family: Poppins").attr("font-weight","400");
-	}	
+	}
 	if($('#appoinmnts_chart').length > 0) {
 		// Area Chart
 		var data=[{
@@ -372,9 +372,9 @@ $(document).ready(function(){
 				gridTextFamily:"Poppins",
 				parseTime: false,
 				fillOpacity:0.6
-			});	
+			});
 	}
-	
+
 });
 /*****Ready function end*****/
 
@@ -382,19 +382,19 @@ $(document).ready(function(){
 $(window).load(function(){
 	window.setTimeout(function(){
 		$.toast({
-			heading: 'Welcome to Philbert',
-			text: 'Use the predefined ones, or specify a custom position object.',
+			heading: 'Selamat Datang di',
+			text: 'Sistem Informasi Penggajian SDN Karya Ruteng',
 			position: 'top-right',
 			loaderBg:'#f0c541',
 			icon: 'success',
-			hideAfter: 3500, 
+			hideAfter: 3500,
 			stack: 6
 		});
 	}, 3000);
 });
 /*****Load function* end*****/
 
-var sparklineLogin = function() { 
+var sparklineLogin = function() {
 	if( $('#sparkline_1').length > 0 ){
 		$("#sparkline_1").sparkline([2,4,4,6,8,5,6,4,8,6,6,2 ], {
 			type: 'line',
@@ -408,7 +408,7 @@ var sparklineLogin = function() {
 			highlightLineColor: 'rgba(0, 0, 0, 0.6)',
 			highlightSpotColor: '#2ecd99'
 		});
-	}	
+	}
 	if( $('#sparkline_2').length > 0 ){
 		$("#sparkline_2").sparkline([0,2,8,6,8], {
 			type: 'line',
@@ -422,7 +422,7 @@ var sparklineLogin = function() {
 			highlightLineColor: 'rgba(0, 0, 0, 0.6)',
 			highlightSpotColor: '#2ecd99'
 		});
-	}	
+	}
 	if( $('#sparkline_3').length > 0 ){
 		$("#sparkline_3").sparkline([0, 23, 43, 35, 44, 45, 56, 37, 40, 45, 56, 7, 10], {
 			type: 'line',

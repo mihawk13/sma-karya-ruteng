@@ -19,9 +19,6 @@
 <!-- Switchery JavaScript -->
 <script src="{{ asset('assets/vendors/bower_components/switchery/dist/switchery.min.js') }}"></script>
 
-<!-- Fancy Dropdown JS -->
-<script src="{{ asset('assets/dist/js/dropdown-bootstrap-extended.js') }}"></script>
-
 @yield('script')
 
 <!-- Init JavaScript -->
