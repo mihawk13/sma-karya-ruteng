@@ -42,7 +42,7 @@ class CutiSayaController extends Controller
     {
         try {
             $this->validate($req, [
-                'file' => 'required|mimes:jpeg,png,jpg,pdf',
+                'file' => 'required|mimes:jpeg,png,jpg,pdf,doc,docx',
             ]);
 
             $nip = auth()->user()->pegawai->nip;
@@ -53,7 +53,7 @@ class CutiSayaController extends Controller
 
             $imagename = strtotime(Carbon::now()) . '.' . $file->extension();
             // utk hosting, public dihapus
-            Storage::putFileAs('cuti', $file, $imagename);
+            Storage::putFileAs('public/cuti', $file, $imagename);
 
             Cuti::create([
                 'nip' => $nip,
@@ -95,13 +95,13 @@ class CutiSayaController extends Controller
         try {
             if (request()->file('file')) {
                 $this->validate($req, [
-                    'file' => 'required|mimes:jpeg,png,jpg,pdf',
+                    'file' => 'required|mimes:jpeg,png,jpg,pdf,doc,docx',
                 ]);
                 $file = request()->file('file');
 
                 $imagename = strtotime(Carbon::now()) . '.' . $file->extension();
                 // utk hosting, public dihapus
-                Storage::putFileAs('cuti', $file, $imagename);
+                Storage::putFileAs('public/cuti', $file, $imagename);
 
                 Cuti::where('id', $id)->update([
                     'file' => $imagename,

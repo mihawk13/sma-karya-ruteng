@@ -68,7 +68,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label mb-10">Surat Keterangan Cuti</label><br>
-                            @if (Str::substr($ct->file, Str::length($ct->file) - 3, 3) == 'pdf')
+                            @if (Str::substr($ct->file, Str::length($ct->file) - 3, 3) == 'pdf' || Str::substr($ct->file, Str::length($ct->file) - 3, 3) == 'doc' || Str::substr($ct->file, Str::length($ct->file) - 3, 3) == 'docx')
                             <a href="{{ Storage::url('cuti/' . $ct->file) }}" type="button"
                                 class="btn btn-success btn-lg">Download Surat</a>
                             @else
