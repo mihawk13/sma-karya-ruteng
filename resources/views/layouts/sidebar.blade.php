@@ -143,7 +143,7 @@
         </li>
         <li>
             <a href="{{ route('kepsek.terlambat') }}">
-                <div class="pull-left"><i class="fa fa-usd mr-20"></i><span class="right-nav-text">Laporan Keterlambatan</span>
+                <div class="pull-left"><i class="fa fa-universal-access mr-20"></i><span class="right-nav-text">Laporan Keterlambatan</span>
                 </div>
                 <div class="clearfix"></div>
             </a>

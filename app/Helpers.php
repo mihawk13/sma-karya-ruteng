@@ -1,7 +1,11 @@
 <?php
 
+use App\Models\Gaji;
 use App\Models\Absensi;
+use App\Models\Cuti;
+use App\Models\Jabatan;
 use App\Models\Pegawai;
+use App\Models\Potongan;
 use App\Models\Tunjangan;
 use App\Models\User;
 
@@ -39,4 +43,49 @@ function getJmlTunjangan()
 {
     $tjg = Tunjangan::count();
     return $tjg;
+}
+
+function getJmlPotongan()
+{
+    $ptg = Potongan::count();
+    return $ptg;
+}
+
+function getJmlJabatan()
+{
+    $jbt = Jabatan::count();
+    return $jbt;
+}
+
+function getJmlCuti()
+{
+    $ct = Cuti::count();
+    return $ct;
+}
+
+function getJmlGaji()
+{
+    $gj = Gaji::count();
+    return $gj;
+}
+
+function getJmlAbsensiSaya()
+{
+    $nip = auth()->user()->pegawai->nip;
+    $abs = Absensi::where('nip', $nip)->count();
+    return $abs;
+}
+
+function getJmlCutiSaya()
+{
+    $nip = auth()->user()->pegawai->nip;
+    $ct = Cuti::where('nip', $nip)->count();
+    return $ct;
+}
+
+function getJmlGajiSaya()
+{
+    $nip = auth()->user()->pegawai->nip;
+    $gj = Gaji::where('nip', $nip)->count();
+    return $gj;
 }
