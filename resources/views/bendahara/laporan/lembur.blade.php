@@ -41,11 +41,11 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-3">
                         <label class="control-label text-hide mb-15">-</label><br>
                         <button type="submit" class="btn btn-success">Lihat</button>
                         @if ($thn != 0)
-                        <a target="_blank" href="{{ route('lap.lembur.cetak', [$thn, $prd]) }}" class="btn btn-danger">Cetak</a>
+                        <a target="_blank" href="{{ route('kepsek.cetak', [$thn, $prd]) }}" class="btn btn-danger">Cetak</a>
                         @endif
                     </div>
                 </form>

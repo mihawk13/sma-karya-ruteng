@@ -6,7 +6,7 @@
 </div>
 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
     <ol class="breadcrumb">
-        <li><a href="/">Bendahara</a></li>
+        <li><a href="/">Kepala Sekolah</a></li>
         <li class="active"><span>Laporan Gaji</span></li>
     </ol>
 </div>
@@ -41,11 +41,11 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-3">
                         <label class="control-label text-hide mb-15">-</label><br>
                         <button type="submit" class="btn btn-success">Lihat</button>
                         @if ($thn != 0)
-                        <a target="_blank" href="{{ route('lap.gaji.cetak', [$thn, $prd]) }}" class="btn btn-danger">Cetak</a>
+                        <a target="_blank" href="{{ route('kepsek.gaji.cetak', [$thn, $prd]) }}" class="btn btn-danger">Cetak</a>
                         @endif
                     </div>
                 </form>
