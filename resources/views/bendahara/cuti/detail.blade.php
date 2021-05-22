@@ -78,7 +78,7 @@
                     </div>
                     <div class="modal-footer">
                         <a href="{{ route('cuti') }}" type="button" class="btn btn-danger">Kembali</a>
-                        <button type="submit" class="btn btn-primary">Konfirmasi Cuti</button>
+                        {{-- <button type="submit" class="btn btn-primary">Konfirmasi Cuti</button> --}}
                     </div>
                 </div>
             </div>

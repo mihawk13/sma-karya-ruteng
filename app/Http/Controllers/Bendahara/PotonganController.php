@@ -27,7 +27,8 @@ class PotonganController extends Controller
      */
     public function create()
     {
-        $pegawai = Pegawai::all();
+        $potongan = Potongan::get('nip');
+        $pegawai = Pegawai::whereNotIn('nip', $potongan)->get();
         return view('bendahara.potongan.tambah', compact('pegawai'));
     }
 
