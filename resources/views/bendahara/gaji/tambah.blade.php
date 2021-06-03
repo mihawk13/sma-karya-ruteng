@@ -37,25 +37,6 @@
                             <h5 class="modal-title">Tambah Data Gaji</h5>
                         </div>
                         <div class="modal-body">
-                            <div class="form-group">
-                                <label class="control-label mb-10">Periode</label>
-                                <select name="periode" class="form-control select2" required>
-                                    <option value="">--Pilih Periode--</option>
-                                    @foreach (getBulan() as $itm)
-                                        <option value="{{ $itm }}">{{ $itm }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label mb-10">Tanggal</label>
-                                <div class='input-group date'>
-                                    <input name="tanggal" type='text' class="form-control" required
-                                        value="{{ old('tanggal') }}" />
-                                    <span class="input-group-addon">
-                                        <span class="fa fa-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
                             @livewire('gaji', ['gj_id' => 0])
                         </div>
                         <div class="modal-footer">

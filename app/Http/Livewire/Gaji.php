@@ -12,6 +12,8 @@ use Livewire\Component;
 
 class Gaji extends Component
 {
+    public $tanggal = '';
+    public $periode = '';
     public $nip = '';
     public $jabatan = '';
     public $gapok = 0;
@@ -30,6 +32,10 @@ class Gaji extends Component
             $this->bonus = $gj->bonus;
             $this->totalGaji = $gj->total_gaji;
             $this->nip = $gj->nip;
+            $this->periode = $gj->periode;
+            $this->tanggal = $gj->tanggal;
+        }else{
+            $this->tanggal = now();
         }
     }
 
@@ -39,8 +45,29 @@ class Gaji extends Component
         return view('livewire.gaji', compact('pegawai'));
     }
 
+    public function UpdatedPeriode($val)
+    {
+        $this->periode = getBulanEng($val);
+        try {
+            $bonus = Absensi::where('periode', $this->periode)->where('nip', $this->nip)->where('jam_pulang', '>', '13:00')->get();
+            $lembur = 0;
+            if (count($bonus) === 0) {
+                $this->bonus = 0;
+            } else {
+                foreach ($bonus as $bn) {
+                    $lembur += \Carbon\Carbon::parse($bn->jam_pulang)->floatDiffInHours("13:00");
+                }
+                $this->bonus = $lembur * 7000;
+            }
+            $this->totalGaji = ($this->gapok + $this->tunjangan + $this->bonus) - $this->potongan;
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+
     public function UpdatedNip($nip)
     {
+        $this->nip = $nip;
         try {
             $pegawai = Pegawai::where('nip', $nip)->get();
             $jabatan = $pegawai[0]->jabatan;
@@ -69,7 +96,7 @@ class Gaji extends Component
                 $this->potongan = $ptg[0]->pot_simpan_pinjam + $ptg[0]->pot_konsumsi_wajib + $ptg[0]->uang_duka;
             }
 
-            $bonus = Absensi::where('nip', $nip)->where('jam_pulang', '>', '13:00')->get();
+            $bonus = Absensi::where('periode', $this->periode)->where('nip', $nip)->where('jam_pulang', '>', '13:00')->get();
             $lembur = 0;
             if (count($bonus) === 0) {
                 $this->bonus = 0;

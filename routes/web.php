@@ -52,6 +52,7 @@ Route::middleware(['bendahara', 'auth'])->prefix('bendahara')->group(function ()
     Route::post('pegawai/tambah', [PegawaiController::class, 'store']);
     Route::get('pegawai/ubah/{id}', [PegawaiController::class, 'show'])->name('pegawai.ubah');
     Route::post('pegawai/ubah/{id}', [PegawaiController::class, 'update']);
+    Route::delete('pegawai/{id}', [PegawaiController::class, 'destroy'])->name('pegawai.hapus');
 
     Route::get('user', [UserController::class, 'index'])->name('user');
     Route::get('user/tambah', [UserController::class, 'create'])->name('user.tambah');

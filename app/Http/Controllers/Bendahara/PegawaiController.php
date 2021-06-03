@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Bendahara;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
 
@@ -66,5 +67,12 @@ class PegawaiController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('gagal', $e->getMessage());
         }
+    }
+
+    public function destroy($id)
+    {
+        Pegawai::find($id)->delete();
+        User::where('pegawai_id', $id)->delete();
+        return redirect()->route('pegawai')->with('berhasil', 'Data berhasil dihapus!');
     }
 }

@@ -36,7 +36,7 @@
                             <h5 class="modal-title" id="exampleModalLabel">Ubah Data Gaji</h5>
                         </div>
                         <div class="modal-body">
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label class="control-label mb-10">Periode</label>
                                 <select name="periode" class="form-control select2" required>
                                     @foreach (getBulan() as $itm)
@@ -53,7 +53,7 @@
                                         <span class="fa fa-calendar"></span>
                                     </span>
                                 </div>
-                            </div>
+                            </div> --}}
                             @livewire('gaji', ['gj_id' => $gj->id])
                         </div>
                         <div class="modal-footer">
