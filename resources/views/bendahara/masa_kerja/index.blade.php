@@ -31,17 +31,30 @@
                                         <th>Nama Pegawai</th>
                                         <th>Jabatan</th>
                                         <th>Tahun Mulai Kerja</th>
-                                        <th>Lama Kerja</th>
+                                        <th>Lama Masa Kerja</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($pegawai as $pg)
+                                    @php
+                                    $lamaBulan =
+                                    \Carbon\Carbon::parse($pg->tgl_mulai)->diffInMonths(date('M'));
+                                    $lamaTahun = \Carbon\Carbon::parse($pg->tgl_mulai)->diffInYears(date('Y'));
+
+                                    if ($lamaTahun == 0) {
+                                    $lamaKerja = $lamaBulan . ' Bulan';
+                                    } else {
+                                    $lamaBulan -= ($lamaTahun * 12);
+                                    $lamaKerja = $lamaTahun . ' Tahun ' . $lamaBulan . ' Bulan';
+                                    }
+                                    @endphp
+
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $pg->nama }}</td>
                                         <td>{{ $pg->jabatan }}</td>
                                         <td>{{ \Carbon\Carbon::parse($pg->tgl_mulai)->translatedFormat('Y') }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($pg->tgl_mulai)->diffInYears('2021') . ' Tahun' }}</td>
+                                        <td>{{ $lamaKerja }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

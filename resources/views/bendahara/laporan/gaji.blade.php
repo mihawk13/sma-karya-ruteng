@@ -61,6 +61,7 @@
                                         <th>Jabatan</th>
                                         <th>Nama Pegawai</th>
                                         <th>Periode</th>
+                                        <th>Lama Masa Kerja</th>
                                         <th>Gaji Pokok</th>
                                         <th>Tunjangan</th>
                                         <th>Bonus</th>
@@ -70,11 +71,30 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($gaji as $gj)
+                                    @php
+                                    $lamaBulan =
+                                    \Carbon\Carbon::parse($gj->pegawai->tgl_mulai)->diffInMonths(getBulanEng($gj->periode));
+                                    $lamaTahun = \Carbon\Carbon::parse($gj->pegawai->tgl_mulai)->diffInYears(\Carbon\Carbon::parse($gj->tanggal)->format('Y'));
+
+                                    if ($lamaTahun == 0) {
+                                        $lamaKerja = $lamaBulan . ' Bulan';
+                                    } else {
+                                        $lamaBulan -= ($lamaTahun * 12);
+                                        if($lamaBulan < 0){
+                                            $lamaBulan = 12 + $lamaBulan;
+                                            $lamaTahun -= 1;
+                                            $lamaKerja = $lamaTahun . ' Tahun ' . $lamaBulan . ' Bulan';
+                                        }elseif($lamaBulan == 0 || $lamaTahun > 0){
+                                            $lamaKerja = $lamaTahun . ' Tahun ';
+                                        }
+                                    }
+                                    @endphp
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $gj->pegawai->jabatan }}</td>
                                         <td>{{ $gj->pegawai->nama }}</td>
                                         <td>{{ $gj->periode }}</td>
+                                        <td>{{ $lamaKerja }}</td>
                                         <td>{{ number_format($gj->gaji_pokok) }}</td>
                                         <td>{{ number_format($gj->tunjangan) }}</td>
                                         <td>{{ number_format($gj->bonus) }}</td>

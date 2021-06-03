@@ -21,6 +21,18 @@ function getJabatan()
     return $jbt;
 }
 
+function getBulan()
+{
+    return ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+}
+
+function getBulanEng($bln)
+{
+    $bulan = array_search($bln, getBulan());
+    $bulanEn = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+    return $bulanEn[$bulan];
+}
+
 function getJmlPegawai()
 {
     $guru = Pegawai::count();

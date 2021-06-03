@@ -9,9 +9,9 @@ class PDF_Gaji extends Fpdf
     public function Header()
     {
         $this->SetFont('Arial', 'B', 12);
-        $this->Cell(185, 0, 'SMA KARYA RUTENG', 0, 0, 'C');
+        $this->Cell(275, 0, 'SMA KARYA RUTENG', 0, 0, 'C');
         $this->ln(10);
-        $this->Cell(185, 0, 'LAPORAN GAJI',0, 0, 'C');
+        $this->Cell(275, 0, 'LAPORAN GAJI',0, 0, 'C');
         $this->ln(10);
     }
 
