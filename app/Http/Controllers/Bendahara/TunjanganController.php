@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Bendahara;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pegawai;
 use App\Models\Tunjangan;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,9 @@ class TunjanganController extends Controller
      */
     public function create()
     {
-        return view('bendahara.tunjangan.tambah');
+        $tunjangan = Tunjangan::get('nip');
+        $pegawai = Pegawai::whereNotIn('nip', $tunjangan)->get();
+        return view('bendahara.tunjangan.tambah', compact('pegawai'));
     }
 
     /**
@@ -39,7 +42,7 @@ class TunjanganController extends Controller
     {
         try {
             Tunjangan::create([
-                'nama_jabatan' => $req->jbt,
+                'nip' => $req->nip,
                 'fungsional' => $req->fungsional,
                 'jabatan' => $req->jabatan,
                 'pengabdian' => $req->pengabdian,
@@ -62,7 +65,8 @@ class TunjanganController extends Controller
     public function show($id)
     {
         $tjg = Tunjangan::find($id);
-        return view('bendahara.tunjangan.ubah', compact('tjg'));
+        $pegawai = Pegawai::all();
+        return view('bendahara.tunjangan.ubah', compact('tjg', 'pegawai'));
     }
 
     /**
@@ -76,7 +80,7 @@ class TunjanganController extends Controller
     {
         try {
             Tunjangan::where('id', $id)->update([
-                'nama_jabatan' => $req->jbt,
+                'nip' => $req->nip,
                 'fungsional' => $req->fungsional,
                 'jabatan' => $req->jabatan,
                 'pengabdian' => $req->pengabdian,

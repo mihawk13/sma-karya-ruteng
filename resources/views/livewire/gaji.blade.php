@@ -4,7 +4,7 @@
         <select name="nip" id="nip" class="form-control select2" required>
             <option value="">--Pilih Pegawai--</option>
             @foreach ($pegawai as $pgw)
-            <option value="{{ $pgw->nip }}">{{ $pgw->nama }}</option>
+            <option @if($nip == $pgw->nip) selected @endif value="{{ $pgw->nip }}">{{ $pgw->nama }}</option>
             @endforeach
         </select>
     </div>

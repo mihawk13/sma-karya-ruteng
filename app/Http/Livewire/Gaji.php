@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Gaji as GajiModels;
 use App\Models\Absensi;
 use App\Models\Jabatan;
 use App\Models\Pegawai;
@@ -18,6 +19,19 @@ class Gaji extends Component
     public $potongan = 0;
     public $bonus = 0;
     public $totalGaji = 0;
+
+    public function mount($gj_id)
+    {
+        if ($gj_id != 0) {
+            $gj = GajiModels::find($gj_id);
+            $this->gapok = $gj->gaji_pokok;
+            $this->tunjangan = $gj->tunjangan;
+            $this->potongan = $gj->potongan;
+            $this->bonus = $gj->bonus;
+            $this->totalGaji = $gj->total_gaji;
+            $this->nip = $gj->nip;
+        }
+    }
 
     public function render()
     {
@@ -40,7 +54,7 @@ class Gaji extends Component
             }
 
 
-            $tjg = Tunjangan::where('nama_jabatan', $jabatan)->get();
+            $tjg = Tunjangan::where('nip', $nip)->get();
             if (count($tjg) === 0) {
                 $this->tunjangan = 0;
             } else {
@@ -77,15 +91,4 @@ class Gaji extends Component
             $this->totalGaji = 0;
         }
     }
-
-    // public function UpdatedBonus($bonus)
-    // {
-    //     try {
-    //         $this->bonus = $bonus;
-
-    //         $this->totalGaji = ($this->gapok + $this->tunjangan + $this->bonus) - $this->potongan;
-    //     } catch (\Throwable $th) {
-    //         //throw $th;
-    //     }
-    // }
 }

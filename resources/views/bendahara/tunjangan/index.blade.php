@@ -34,7 +34,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Jabatan</th>
+                                        <th>Nama Pegawai</th>
                                         <th>T. Fungsional</th>
                                         <th>T. Jabatan</th>
                                         <th>T. Pengabdian</th>
@@ -48,7 +48,7 @@
                                     @foreach ($tunjangan as $tjg)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $tjg->nama_jabatan }}</td>
+                                        <td>{{ $tjg->pegawai->nama }}</td>
                                         <td>{{ number_format($tjg->fungsional) }}</td>
                                         <td>{{ number_format($tjg->jabatan) }}</td>
                                         <td>{{ number_format($tjg->pengabdian) }}</td>

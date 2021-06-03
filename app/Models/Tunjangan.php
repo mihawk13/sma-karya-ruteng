@@ -12,5 +12,10 @@ class Tunjangan extends Model
     protected $table = 'tunjangan';
     public $timestamps = false;
 
-    protected $fillable = ['nama_jabatan', 'fungsional', 'jabatan', 'pengabdian', 'istri_suami', 'anak'];
+    protected $fillable = ['nip', 'fungsional', 'jabatan', 'pengabdian', 'istri_suami', 'anak'];
+
+    public function pegawai()
+    {
+        return $this->hasOne(Pegawai::class, 'nip', 'nip');
+    }
 }

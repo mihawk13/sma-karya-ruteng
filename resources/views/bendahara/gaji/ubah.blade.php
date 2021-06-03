@@ -9,12 +9,12 @@
 
 @section('breadcrumb')
 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-    <h5 class="txt-dark">Cuti</h5>
+    <h5 class="txt-dark">Gaji</h5>
 </div>
 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
     <ol class="breadcrumb">
         <li><a href="/">Guru</a></li>
-        <li><a href="/">Cuti</a></li>
+        <li><a href="/">Gaji</a></li>
         <li class="active"><span>Ubah</span></li>
     </ol>
 </div>
@@ -30,46 +30,44 @@
         <div class="panel panel-default card-view">
             <div class="panel-wrapper collapse in">
                 <div class="panel-body">
-                    <form data-toggle="validator" role="form" action="{{ route('cuti.guru.ubah', $ct->id) }}"
-                        method="POST" enctype="multipart/form-data">
+                    <form data-toggle="validator" role="form" action="{{ route('gaji.ubah', $gj->id) }}" method="POST">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Ubah Data Cuti</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Ubah Data Gaji</h5>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label class="control-label mb-10">Tanggal Ambil Cuti</label>
+                                <label class="control-label mb-10">Periode</label>
+                                <select name="periode" class="form-control select2" required>
+                                    <option value="{{ $gj->periode }}">{{ $gj->periode }}</option>
+                                    <option value="Januari">Januari</option>
+                                    <option value="Februari">Februari</option>
+                                    <option value="Maret">Maret</option>
+                                    <option value="April">April</option>
+                                    <option value="Mei">Mei</option>
+                                    <option value="Juni">Juni</option>
+                                    <option value="Juli">Juli</option>
+                                    <option value="Agustus">Agustus</option>
+                                    <option value="September">September</option>
+                                    <option value="Oktober">Oktober</option>
+                                    <option value="November">November</option>
+                                    <option value="Desember">Desember</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label mb-10">Tanggal</label>
                                 <div class='input-group date'>
-                                    <input name="awal_cuti" type='text' class="form-control" required
-                                        value="{{ $ct->awal_cuti }}" />
+                                    <input name="tanggal" type='text' class="form-control" required
+                                        value="{{ old('tanggal') ?? $gj->tanggal }}" />
                                     <span class="input-group-addon">
                                         <span class="fa fa-calendar"></span>
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label mb-10">Tanggal Akhir Cuti</label>
-                                <div class='input-group date'>
-                                    <input name="akhir_cuti" type='text' class="form-control" required
-                                        value="{{ $ct->akhir_cuti }}" />
-                                    <span class="input-group-addon">
-                                        <span class="fa fa-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label mb-10">Surat Keterangan Cuti <small>(kosongkan jika tidak
-                                        diubah)</small></label>
-                                <input type="file" class="form-control" name="file">
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label mb-10">Keterangan</label>
-                                <input type="text" class="form-control" name="ket"
-                                    placeholder="Masukkan Keterangan Cuti Anda" required value="{{ $ct->keterangan }}">
-                            </div>
+                            @livewire('gaji', ['gj_id' => $gj->id])
                         </div>
                         <div class="modal-footer">
-                            <a href="{{ route('potongan') }}" type="button" class="btn btn-danger">Kembali</a>
+                            <a href="{{ route('gaji') }}" type="button" class="btn btn-danger">Kembali</a>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>

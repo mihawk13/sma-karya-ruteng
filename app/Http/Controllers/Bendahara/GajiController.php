@@ -64,8 +64,8 @@ class GajiController extends Controller
      */
     public function show($id)
     {
-        $pgw = Gaji::find($id);
-        return view('bendahara.gaji.ubah', compact('pgw'));
+        $gj = Gaji::find($id);
+        return view('bendahara.gaji.ubah', compact('gj'));
     }
 
     /**
@@ -79,14 +79,14 @@ class GajiController extends Controller
     {
         try {
             Gaji::where('id', $id)->update([
-                'jabatan' => $req->jabatan,
-                'nama' => $req->nama,
-                'jk' => $req->jk,
-                'tgl_lahir' => $req->tgl,
-                'alamat' => $req->alamat,
-                'tgl_mulai' => $req->tglMulai,
-                'telp' => $req->telp,
-                'no_rekening' => $req->rekening
+                'nip' => $req->nip,
+                'periode' => $req->periode,
+                'tanggal' => $req->tanggal,
+                'gaji_pokok' => $req->gaji_pokok,
+                'tunjangan' => $req->tunjangan,
+                'potongan' => $req->potongan,
+                'bonus' => $req->bonus_lembur,
+                'total_gaji' => $req->total_gaji,
             ]);
 
             return redirect()->route('gaji')->with('berhasil', 'Data berhasil diubah!');
@@ -103,6 +103,7 @@ class GajiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Gaji::find($id)->delete();
+        return redirect()->route('gaji')->with('berhasil', 'Data berhasil dihapus!');
     }
 }

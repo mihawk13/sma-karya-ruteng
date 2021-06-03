@@ -92,6 +92,7 @@ Route::middleware(['bendahara', 'auth'])->prefix('bendahara')->group(function ()
     Route::post('gaji/tambah', [GajiController::class, 'store']);
     Route::get('gaji/ubah/{id}', [GajiController::class, 'show'])->name('gaji.ubah');
     Route::post('gaji/ubah/{id}', [GajiController::class, 'update']);
+    Route::delete('gaji/{id}', [GajiController::class, 'destroy'])->name('gaji.hapus');
 
     Route::get('laporan-gaji', [LaporanController::class, 'gaji'])->name('lap.gaji');
     Route::post('laporan-gaji', [LaporanController::class, 'postGaji']);
@@ -107,7 +108,7 @@ Route::middleware(['bendahara', 'auth'])->prefix('bendahara')->group(function ()
 
     Route::get('laporan-keterlambatan', [LaporanController::class, 'keterlambatan'])->name('lap.keterlambatan');
     Route::post('laporan-keterlambatan', [LaporanController::class, 'postKeterlambatan']);
-    Route::get('laporan-keterlambatan/{tahun}/{periode}', [PDF_Keterlambatan::class, 'pdf'])->name('lap.terlambat.cetak');
+    Route::get('laporan-keterlambatan/{tahun}/{periode}', [PDF_Keterlambatan::class, 'pdf'])->name('lap.keterlambatan.cetak');
 
 });
 
@@ -142,7 +143,7 @@ Route::middleware(['kepsek', 'auth'])->prefix('kepsek')->group(function () {
 
     Route::get('laporan-lembur', [KepsekLaporanController::class, 'lembur'])->name('kepsek.lembur');
     Route::post('laporan-lembur', [KepsekLaporanController::class, 'postLembur']);
-    Route::get('laporan-lembur/{tahun}/{periode}', [PDF_Lembur::class, 'pdf'])->name('kepsek.cetak');
+    Route::get('laporan-lembur/{tahun}/{periode}', [PDF_Lembur::class, 'pdf'])->name('kepsek.lembur.cetak');
 
     Route::get('laporan-keterlambatan', [KepsekLaporanController::class, 'keterlambatan'])->name('kepsek.terlambat');
     Route::post('laporan-keterlambatan', [KepsekLaporanController::class, 'postKeterlambatan']);

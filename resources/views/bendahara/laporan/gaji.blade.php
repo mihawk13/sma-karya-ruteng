@@ -45,7 +45,7 @@
                         <label class="control-label text-hide mb-15">-</label><br>
                         <button type="submit" class="btn btn-success">Lihat</button>
                         @if ($thn != 0)
-                        <a target="_blank" href="{{ route('kepsek.gaji.cetak', [$thn, $prd]) }}" class="btn btn-danger">Cetak</a>
+                        <a target="_blank" href="{{ route('lap.gaji.cetak', [$thn, $prd]) }}" class="btn btn-danger">Cetak</a>
                         @endif
                     </div>
                 </form>
@@ -58,6 +58,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Jabatan</th>
                                         <th>Nama Pegawai</th>
                                         <th>Periode</th>
                                         <th>Gaji Pokok</th>
@@ -71,6 +72,7 @@
                                     @foreach ($gaji as $gj)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $gj->pegawai->jabatan }}</td>
                                         <td>{{ $gj->pegawai->nama }}</td>
                                         <td>{{ $gj->periode }}</td>
                                         <td>{{ number_format($gj->gaji_pokok) }}</td>

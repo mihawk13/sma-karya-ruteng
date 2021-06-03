@@ -37,11 +37,11 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label class="control-label mb-10">Nama Jabatan</label>
-                                <select name="jbt" class="form-control selectpicker" required>
-                                    <option value="">--Pilih Jabatan--</option>
-                                    @foreach (getJabatan() as $jb)
-                                        <option value="{{ $jb }}">{{ $jb }}</option>
+                                <label class="control-label mb-10">Nama Pegawai</label>
+                                <select name="nip" class="form-control selectpicker" required>
+                                    <option value="">--Pilih Pegawai--</option>
+                                    @foreach ($pegawai as $pgw)
+                                        <option value="{{ $pgw->nip }}">{{ $pgw->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>

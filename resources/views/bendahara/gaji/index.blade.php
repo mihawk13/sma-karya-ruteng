@@ -34,6 +34,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Jabatan</th>
                                         <th>Nama Pegawai</th>
                                         <th>Periode</th>
                                         <th>Gaji Pokok</th>
@@ -41,13 +42,14 @@
                                         <th>Bonus</th>
                                         <th>Potongan</th>
                                         <th>Total Gaji</th>
-                                        {{-- <th>Aksi</th> --}}
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($gaji as $gj)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $gj->pegawai->jabatan }}</td>
                                         <td>{{ $gj->pegawai->nama }}</td>
                                         <td>{{ $gj->periode }}</td>
                                         <td>{{ number_format($gj->gaji_pokok) }}</td>
@@ -55,14 +57,44 @@
                                         <td>{{ number_format($gj->bonus) }}</td>
                                         <td>{{ number_format($gj->potongan) }}</td>
                                         <td>{{ number_format($gj->total_gaji) }}</td>
-                                        {{-- <td>
+                                        <td>
                                             <center>
-                                                <button onclick="openLink({{ $gj->id }})" type="button" class="btn btn-warning btn-icon-anim btn-square btn-sm"
-                                                    data-toggle="tooltip" data-placement="left" title="Ubah Data Cuti"><i
-                                                        class="fa fa-pencil"></i></button>
+                                                <button onclick="openLink({{ $gj->id }})" type="button"
+                                                    class="btn btn-warning btn-icon-anim btn-square btn-sm"
+                                                    data-toggle="tooltip" data-placement="left"
+                                                    title="Ubah Data Gaji"><i class="fa fa-pencil"></i></button>
+                                                <button type="button"
+                                                    class="btn btn-danger btn-icon-anim btn-square btn-sm"
+                                                    data-toggle="modal" data-placement="left" data-target="#hapus{{ $gj->id }}"
+                                                    title="Hapus Data Gaji"><i class="fa fa-trash"></i></button>
                                             </center>
-                                        </td> --}}
+                                        </td>
                                     </tr>
+                                    <div id="hapus{{ $gj->id }}" class="modal fade" tabindex="-1" role="dialog"
+                                        aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <form method="POST" action="{{ route('gaji.hapus', $gj->id) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Konfirmasi</h4>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-hidden="true">×</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h4>Apakah anda yakin menghapus data ini?</h4>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger waves-effect"
+                                                            data-dismiss="modal">Tidak</button>
+                                                        <button type="submit"
+                                                            class="btn btn-success waves-effect waves-light">Iya</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                     @endforeach
                                 </tbody>
                             </table>
