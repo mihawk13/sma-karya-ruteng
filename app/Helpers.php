@@ -101,3 +101,16 @@ function getJmlGajiSaya()
     $gj = Gaji::where('nip', $nip)->count();
     return $gj;
 }
+
+function timeToKeterlambatan($jam)
+{
+    $hasil = substr($jam, 0, 2);
+
+    if ($hasil == '00') {
+        $hasil = substr($jam, 2, 4) . ' Menit';
+    } else {
+        $hasil = substr($jam, 0, 2) . ' Jam';
+        $hasil = str_replace('0', '', $hasil);
+    }
+    return str_replace(':', '', $hasil);
+}

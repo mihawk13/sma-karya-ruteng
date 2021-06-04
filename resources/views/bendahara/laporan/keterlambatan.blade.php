@@ -61,7 +61,7 @@
                                         <th>Nama Pegawai</th>
                                         <th>Periode</th>
                                         <th>Tahun</th>
-                                        <th>Keterlambatan / Jam</th>
+                                        <th>Total Keterlambatan</th>
                                         <th>Jumlah Keterlambatan</th>
                                     </tr>
                                 </thead>
@@ -72,7 +72,7 @@
                                         <td>{{ $abs->nama }}</td>
                                         <td>{{ $abs->periode }}</td>
                                         <td>{{ $abs->tahun }}</td>
-                                        <td>{{ $abs->jam_terlambat }}</td>
+                                        <td>{{ timeToKeterlambatan($abs->jam_terlambat) }}</td>
                                         <td>{{ $abs->jml_terlambat }}</td>
                                     </tr>
                                     @endforeach
