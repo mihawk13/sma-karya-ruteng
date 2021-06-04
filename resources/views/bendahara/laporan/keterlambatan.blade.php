@@ -72,7 +72,7 @@
                                         <td>{{ $abs->nama }}</td>
                                         <td>{{ $abs->periode }}</td>
                                         <td>{{ $abs->tahun }}</td>
-                                        <td>{{ $abs->jam_terlambat }}</td>
+                                        <td>{{ timeToKeterlambatan($abs->jam_terlambat) }}</td>
                                         <td>{{ $abs->jml_terlambat }}</td>
                                     </tr>
                                     @endforeach

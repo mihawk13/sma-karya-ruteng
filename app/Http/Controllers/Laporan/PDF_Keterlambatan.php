@@ -35,7 +35,7 @@ class PDF_Keterlambatan extends Controller
 
         $this->pdf->SetFont('Arial', '', 10);
         $no = 1;
-        $absensi = DB::select("SELECT a.*, b.nama, COUNT(a.periode) jml_terlambat, SUM(a.jam_masuk)-(COUNT(a.jam_masuk)*7) jam_terlambat FROM absensi a
+        $absensi = DB::select("SELECT a.*, b.nama, COUNT(a.periode) jml_terlambat, SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(a.jam_masuk, '07:30')))) jam_terlambat FROM absensi a
         INNER JOIN pegawai b ON a.nip=b.nip
         WHERE a.tahun = ? AND a.periode = ? AND a.jam_masuk > '07:30' GROUP BY a.nip", [$tahun, $bulan]);
         foreach ($absensi as $abs) {
@@ -44,7 +44,7 @@ class PDF_Keterlambatan extends Controller
             $this->pdf->Cell(45, 7, $abs->nama, 1, 0, 'C');
             $this->pdf->Cell(20, 7, $abs->periode, 1, 0, 'C');
             $this->pdf->Cell(20, 7, $abs->tahun, 1, 0, 'C');
-            $this->pdf->Cell(45, 7, $abs->jam_terlambat, 1, 0, 'C');
+            $this->pdf->Cell(45, 7, timeToKeterlambatan($abs->jam_terlambat), 1, 0, 'C');
             $this->pdf->Cell(45, 7, $abs->jml_terlambat, 1, 0, 'C');
             $this->pdf->ln(0);
         }
