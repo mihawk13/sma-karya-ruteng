@@ -67,7 +67,7 @@ class LaporanController extends Controller
         $periode = Absensi::select('periode')->distinct()->get();
         $absensi = DB::select("SELECT a.*, b.nama, COUNT(a.periode) jml_lembur, SUM(a.jam_pulang)-(COUNT(a.jam_pulang)*13) jam_lembur FROM absensi a
         INNER JOIN pegawai b ON a.nip=b.nip
-         WHERE a.tahun = ? AND a.periode = ? AND a.jam_pulang > '13:00' GROUP BY a.nip", [$thn, $prd]);
+        WHERE a.tahun = ? AND a.periode = ? AND a.jam_pulang > '13:00' GROUP BY a.nip", [$thn, $prd]);
 
         return view('kepsek.lembur', compact('absensi', 'periode', 'tahun', 'thn', 'prd'));
     }
@@ -89,7 +89,7 @@ class LaporanController extends Controller
 
         $tahun = Absensi::select('tahun')->distinct()->get();
         $periode = Absensi::select('periode')->distinct()->get();
-        $absensi = DB::select("SELECT a.*, b.nama, COUNT(a.periode) jml_terlambat, SUM(a.jam_masuk)-(COUNT(a.jam_masuk)*7) jam_terlambat FROM absensi a
+        $absensi = DB::select("SELECT a.*, b.nama, COUNT(a.periode) jml_terlambat, SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(a.jam_masuk, '07:30')))) jam_terlambat FROM absensi a
         INNER JOIN pegawai b ON a.nip=b.nip
         WHERE a.tahun = ? AND a.periode = ? AND a.jam_masuk > '07:30' GROUP BY a.nip", [$thn, $prd]);
 

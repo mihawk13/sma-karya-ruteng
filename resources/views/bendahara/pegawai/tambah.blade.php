@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <label class="control-label mb-10">NIP</label>
                                 <input type="text" class="form-control" name="nip" placeholder="Masukkan Nomor Induk Pegawai"
-                                    required value="{{ old('nip') }}">
+                                    required value="{{ old('nip') ?? floor(time()-999999999) }}">
                             </div>
                             <div class="form-group">
                                 <label class="control-label mb-10">Nama</label>
@@ -67,7 +67,7 @@
                             <div class="form-group">
                                 <label class="control-label mb-10">Tanggal Lahir</label>
                                 <div class='input-group date'>
-                                    <input name="tgl" type='text' class="form-control" required value="{{ old('tgl') }}" />
+                                    <input name="tgl" type='text' class="form-control" required value="{{ old('tgl') ?? '2000-01-01' }}" />
                                     <span class="input-group-addon">
                                         <span class="fa fa-calendar"></span>
                                     </span>
@@ -81,7 +81,7 @@
                             <div class="form-group">
                                 <label class="control-label mb-10">Tanggal Mulai Kerja</label>
                                 <div class='input-group date'>
-                                    <input name="tglMulai" type='text' class="form-control" required value="{{ old('tglMulai') }}"/>
+                                    <input name="tglMulai" type='text' class="form-control" required value="{{ old('tglMulai') ?? date('Y-mm-dd') }}"/>
                                     <span class="input-group-addon">
                                         <span class="fa fa-calendar"></span>
                                     </span>

@@ -67,7 +67,7 @@ class LaporanController extends Controller
         $periode = Absensi::select('periode')->distinct()->get();
         $absensi = DB::select("SELECT a.*, b.nama, COUNT(a.periode) jml_lembur, SUM(a.jam_pulang)-(COUNT(a.jam_pulang)*13) jam_lembur FROM absensi a
         INNER JOIN pegawai b ON a.nip=b.nip
-         WHERE a.tahun = ? AND a.periode = ? AND a.jam_pulang > '13:00' GROUP BY a.nip", [$thn, $prd]);
+        WHERE a.tahun = ? AND a.periode = ? AND a.jam_pulang > '13:00' GROUP BY a.nip", [$thn, $prd]);
 
         return view('bendahara.laporan.lembur', compact('absensi', 'periode', 'tahun', 'thn', 'prd'));
     }

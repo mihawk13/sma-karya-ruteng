@@ -20,6 +20,7 @@ class CreateGajiTable extends Migration
             $table->date('tanggal');
             $table->string('gaji_pokok');
             $table->string('bonus');
+            $table->string('cuti');
             $table->string('potongan');
             $table->string('tunjangan');
             $table->string('total_gaji');

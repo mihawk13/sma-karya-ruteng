@@ -12,7 +12,7 @@ class Gaji extends Model
     protected $table = 'gaji';
     public $timestamps = false;
 
-    protected $fillable = ['nip', 'periode', 'gaji_pokok', 'tanggal', 'bonus', 'potongan', 'tunjangan', 'total_gaji'];
+    protected $fillable = ['nip', 'periode', 'gaji_pokok', 'tanggal', 'bonus', 'cuti', 'potongan', 'tunjangan', 'total_gaji'];
 
     public function pegawai()
     {

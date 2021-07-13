@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Gaji as GajiModels;
 use App\Models\Absensi;
+use App\Models\Cuti;
 use App\Models\Jabatan;
 use App\Models\Pegawai;
 use App\Models\Potongan;
@@ -12,6 +13,8 @@ use Livewire\Component;
 
 class Gaji extends Component
 {
+    public $bulan = '00';
+    public $cuti = 0;
     public $tanggal = '';
     public $periode = '';
     public $nip = '';
@@ -28,13 +31,14 @@ class Gaji extends Component
             $gj = GajiModels::find($gj_id);
             $this->gapok = $gj->gaji_pokok;
             $this->tunjangan = $gj->tunjangan;
+            $this->cuti = $gj->cuti;
             $this->potongan = $gj->potongan;
             $this->bonus = $gj->bonus;
             $this->totalGaji = $gj->total_gaji;
             $this->nip = $gj->nip;
             $this->periode = $gj->periode;
             $this->tanggal = $gj->tanggal;
-        }else{
+        } else {
             $this->tanggal = now();
         }
     }
@@ -48,7 +52,11 @@ class Gaji extends Component
     public function UpdatedPeriode($val)
     {
         $this->periode = getBulanEng($val);
+        $this->bulan = getBulanAngka($val);
+        $this->potongan = 0;
         try {
+            $this->getCuti($this->nip);
+
             $bonus = Absensi::where('periode', $this->periode)->where('nip', $this->nip)->where('jam_pulang', '>', '13:00')->get();
             $lembur = 0;
             if (count($bonus) === 0) {
@@ -59,7 +67,13 @@ class Gaji extends Component
                 }
                 $this->bonus = $lembur * 7000;
             }
-            $this->totalGaji = ($this->gapok + $this->tunjangan + $this->bonus) - $this->potongan;
+
+            $gaji = $this->gapok + $this->tunjangan + $this->bonus;
+            if($this->cuti > 90){
+                $this->potongan += $gaji * 0.05;
+            }
+
+            $this->totalGaji = $gaji - $this->potongan;
         } catch (\Throwable $th) {
             //throw $th;
         }
@@ -68,6 +82,7 @@ class Gaji extends Component
     public function UpdatedNip($nip)
     {
         $this->nip = $nip;
+        $this->potongan = 0;
         try {
             $pegawai = Pegawai::where('nip', $nip)->get();
             $jabatan = $pegawai[0]->jabatan;
@@ -80,6 +95,7 @@ class Gaji extends Component
                 $this->gapok = $gapok[0]->gaji_pokok;
             }
 
+            $this->getCuti($nip);
 
             $tjg = Tunjangan::where('nip', $nip)->get();
             if (count($tjg) === 0) {
@@ -107,8 +123,12 @@ class Gaji extends Component
                 $this->bonus = $lembur * 7000;
             }
 
+            $gaji = $this->gapok + $this->tunjangan + $this->bonus;
+            if($this->cuti > 90){
+                $this->potongan += $gaji * 0.05;
+            }
 
-            $this->totalGaji = ($this->gapok + $this->tunjangan + $this->bonus) - $this->potongan;
+            $this->totalGaji = $gaji - $this->potongan;
         } catch (\Throwable $th) {
             //throw $th;
             $this->gapok = 0;
@@ -116,6 +136,21 @@ class Gaji extends Component
             $this->potongan = 0;
             $this->bonus = 0;
             $this->totalGaji = 0;
+        }
+    }
+
+    public function getCuti($nip)
+    {
+        $like = date('Y') . '-' . $this->bulan;
+        if ($this->bulan == 12) {
+            $like = date('Y') - 1 . '-' . $this->bulan;
+        }
+        // $this->cuti = $this->bulan . ' | ' . $like;
+        $cuti = Cuti::where('nip', $nip)->where('akhir_cuti', 'LIKE', $like . '%')->get();
+        if (count($cuti) === 0) {
+            $this->cuti = 0;
+        } else {
+            $this->cuti = \Carbon\Carbon::parse($cuti[0]->awal_cuti)->diffInDays($cuti[0]->akhir_cuti);
         }
     }
 }

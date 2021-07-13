@@ -65,6 +65,7 @@
                                         <th>Gaji Pokok</th>
                                         <th>Tunjangan</th>
                                         <th>Bonus</th>
+                                        <th>Cuti</th>
                                         <th>Potongan</th>
                                         <th>Total Gaji</th>
                                     </tr>
@@ -98,6 +99,7 @@
                                         <td>{{ number_format($gj->gaji_pokok) }}</td>
                                         <td>{{ number_format($gj->tunjangan) }}</td>
                                         <td>{{ number_format($gj->bonus) }}</td>
+                                        <td>{{ $gj->cuti }} hari</td>
                                         <td>{{ number_format($gj->potongan) }}</td>
                                         <td>{{ number_format($gj->total_gaji) }}</td>
                                     </tr>

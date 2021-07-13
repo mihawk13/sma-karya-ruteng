@@ -33,6 +33,16 @@ function getBulanEng($bln)
     return $bulanEn[$bulan];
 }
 
+function getBulanAngka($bln)
+{
+    $bulan = array_search($bln, getBulan());
+    $hasil = $bulan == 0 ? 12 : $bulan;
+    if (strlen($hasil) === 1) {
+        $hasil = '0' . $hasil;
+    }
+    return $hasil;
+}
+
 function getJmlPegawai()
 {
     $guru = Pegawai::count();

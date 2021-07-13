@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Bendahara;
 
 use App\Http\Controllers\Controller;
 use App\Models\Gaji;
-use App\Models\Pegawai;
 use Illuminate\Http\Request;
 
 class GajiController extends Controller
@@ -45,6 +44,7 @@ class GajiController extends Controller
                 'tanggal' => $req->tanggal,
                 'gaji_pokok' => $req->gaji_pokok,
                 'tunjangan' => $req->tunjangan,
+                'cuti' => $req->cuti,
                 'potongan' => $req->potongan,
                 'bonus' => $req->bonus_lembur,
                 'total_gaji' => $req->total_gaji,
@@ -84,6 +84,7 @@ class GajiController extends Controller
                 'tanggal' => $req->tanggal,
                 'gaji_pokok' => $req->gaji_pokok,
                 'tunjangan' => $req->tunjangan,
+                'cuti' => $req->cuti,
                 'potongan' => $req->potongan,
                 'bonus' => $req->bonus_lembur,
                 'total_gaji' => $req->total_gaji,
