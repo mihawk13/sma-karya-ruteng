@@ -38,8 +38,8 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label class="control-label mb-10">Tanggal Ambil Cuti</label>
-                                <div class='input-group date'>
-                                    <input name="awal_cuti" type='text' class="form-control" required value="{{ old('awal_cuti') }}"/>
+                                <div class='input-group'>
+                                    <input name="awal_cuti" type='text' class="form-control date" required value="{{ old('awal_cuti') }}"/>
                                     <span class="input-group-addon">
                                         <span class="fa fa-calendar"></span>
                                     </span>
@@ -47,8 +47,8 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label mb-10">Tanggal Akhir Cuti</label>
-                                <div class='input-group date'>
-                                    <input name="akhir_cuti" type='text' class="form-control" required value="{{ old('akhir_cuti') }}"/>
+                                <div class='input-group'>
+                                    <input name="akhir_cuti" type='text' class="form-control date" required value="{{ old('akhir_cuti') }}"/>
                                     <span class="input-group-addon">
                                         <span class="fa fa-calendar"></span>
                                     </span>
