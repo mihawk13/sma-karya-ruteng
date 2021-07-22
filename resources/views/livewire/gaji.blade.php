@@ -10,8 +10,8 @@
     </div>
     <div class="form-group">
         <label class="control-label mb-10">Tanggal</label>
-        <div class='input-group date'>
-            <input name="tanggal" type='text' class="form-control" required value="{{ $tanggal }}" />
+        <div class='input-group'>
+            <input name="tanggal" type='text' class="form-control date" required value="{{ $tanggal }}" />
             <span class="input-group-addon">
                 <span class="fa fa-calendar"></span>
             </span>

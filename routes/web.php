@@ -89,8 +89,8 @@ Route::middleware(['bendahara', 'auth'])->prefix('bendahara')->group(function ()
     Route::get('masa-kerja', [MasaKerjaController::class, 'index'])->name('masa_kerja');
 
     Route::get('gaji', [GajiController::class, 'index'])->name('gaji');
-    Route::get('gaji/tambah', [GajiController::class, 'create'])->name('gaji.tambah');
-    Route::post('gaji/tambah', [GajiController::class, 'store']);
+    // Route::get('gaji/tambah', [GajiController::class, 'create'])->name('gaji.tambah');
+    Route::post('gaji/tambah', [GajiController::class, 'store'])->name('gaji.tambah');
     Route::get('gaji/ubah/{id}', [GajiController::class, 'show'])->name('gaji.ubah');
     Route::post('gaji/ubah/{id}', [GajiController::class, 'update']);
     Route::delete('gaji/{id}', [GajiController::class, 'destroy'])->name('gaji.hapus');

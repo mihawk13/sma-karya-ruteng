@@ -115,7 +115,6 @@ function getJmlGajiSaya()
 function timeToKeterlambatan($jam)
 {
     $hasil = substr($jam, 0, 2);
-<<<<<<< HEAD
 
     if ($hasil == '00') {
         $hasil = substr($jam, 2, 4) . ' Menit';
@@ -124,7 +123,5 @@ function timeToKeterlambatan($jam)
         $hasil = str_replace('0', '', $hasil);
     }
     return str_replace(':', '', $hasil);
-=======
-    return str_replace('0', '', $hasil);
->>>>>>> 02960b9224beb5f233014dac127033723f5db523
+    // return str_replace('0', '', $hasil);
 }

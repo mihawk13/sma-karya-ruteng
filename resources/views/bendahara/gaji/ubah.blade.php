@@ -36,35 +36,17 @@
                             <h5 class="modal-title" id="exampleModalLabel">Ubah Data Gaji</h5>
                         </div>
                         <div class="modal-body">
-                            {{-- <div class="form-group">
-                                <label class="control-label mb-10">Periode</label>
-                                <select name="periode" class="form-control select2" required>
-                                    @foreach (getBulan() as $itm)
-                                        <option @if($gj->periode == $itm) selected @endif value="{{ $itm }}">{{ $itm }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label mb-10">Tanggal</label>
-                                <div class='input-group date'>
-                                    <input name="tanggal" type='text' class="form-control" required
-                                        value="{{ old('tanggal') ?? $gj->tanggal }}" />
-                                    <span class="input-group-addon">
-                                        <span class="fa fa-calendar"></span>
-                                    </span>
-                                </div>
-                            </div> --}}
-                            @livewire('gaji', ['gj_id' => $gj->id])
-                        </div>
-                        <div class="modal-footer">
-                            <a href="{{ route('gaji') }}" type="button" class="btn btn-danger">Kembali</a>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                        </div>
-                    </form>
+                        @livewire('gaji', ['gj_id' => $gj->id])
                 </div>
+                <div class="modal-footer">
+                    <a href="{{ route('gaji') }}" type="button" class="btn btn-danger">Kembali</a>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 </div>
 <!-- /Row -->
 @endsection
